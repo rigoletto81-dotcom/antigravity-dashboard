@@ -150,76 +150,79 @@ function DashboardPage() {
       <div className="min-h-screen pb-12">
         {/* ── Header ─────────────────────────────────────────── */}
         <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#0A0A1A]/70 border-b border-white/5">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-            {/* Brand */}
-            <motion.div
-              className="flex items-center gap-3"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
-              <div className="relative">
-                <Zap className="w-6 h-6 text-neon-teal" />
-                <motion.div
-                  className="absolute inset-0 blur-lg bg-neon-teal/30"
-                  animate={{ opacity: [0.3, 0.7, 0.3] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </div>
-              <h1 className="text-lg sm:text-xl font-black tracking-[0.08em] text-white/90 glow-teal">
-                STOCK SELECTING COMMITTEE
-              </h1>
-            </motion.div>
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            {/* Top Row: Brand & Search */}
+            <div className="flex items-center justify-between w-full sm:w-auto gap-4">
+              <motion.div
+                className="flex items-center gap-2 sm:gap-3 shrink-0"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <div className="relative">
+                  <Zap className="w-6 h-6 text-neon-teal" />
+                  <motion.div
+                    className="absolute inset-0 blur-lg bg-neon-teal/30"
+                    animate={{ opacity: [0.3, 0.7, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </div>
+                <h1 className="text-lg sm:text-xl font-black tracking-[0.08em] text-white/90 glow-teal">
+                  STOCK SELECTING COMMITTEE
+                </h1>
+              </motion.div>
 
-            {/* Ticker Input + Regime Badge */}
-            <motion.div
-              className="flex items-center gap-3"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
-                <Input
-                  type="text"
-                  placeholder="$NVDA"
-                  value={ticker}
-                  onChange={handleTickerChange}
-                  onKeyDown={handleTickerSubmit}
-                  className="w-32 sm:w-40 pl-9 font-mono text-sm bg-white/[0.03] border-white/10 text-neon-teal placeholder:text-white/20 focus:border-neon-teal/30 focus:ring-neon-teal/10 uppercase"
-                />
-              </div>
-              {submittedTicker && (
-                <motion.div
-                  className="hidden sm:flex items-center gap-2"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                >
-                  <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-neon-teal/10 text-neon-teal border border-neon-teal/20">
-                    ${submittedTicker}
-                  </span>
-                  {financial.data?.name && (
-                    <span className="text-xs text-white/40 font-medium truncate max-w-[180px]">
-                      {financial.data.name}
+              {/* Ticker Input + Regime Badge */}
+              <motion.div
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                  <Input
+                    type="text"
+                    placeholder="$NVDA"
+                    value={ticker}
+                    onChange={handleTickerChange}
+                    onKeyDown={handleTickerSubmit}
+                    className="w-32 sm:w-40 pl-9 font-mono text-sm bg-white/[0.03] border-white/10 text-neon-teal placeholder:text-white/20 focus:border-neon-teal/30 focus:ring-neon-teal/10 uppercase"
+                  />
+                </div>
+                {submittedTicker && (
+                  <motion.div
+                    className="hidden sm:flex items-center gap-2"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-neon-teal/10 text-neon-teal border border-neon-teal/20">
+                      ${submittedTicker}
                     </span>
-                  )}
-                </motion.div>
-              )}
-              {/* Regime Badge — shows once regime data is loaded */}
-              {(dynamicWeighting.regimeData || dynamicWeighting.loading) && (
-                <RegimeBadge
-                  regime={dynamicWeighting.regime}
-                  loading={dynamicWeighting.loading}
-                />
-              )}
-            </motion.div>
+                    {financial.data?.name && (
+                      <span className="text-xs text-white/40 font-medium truncate max-w-[180px]">
+                        {financial.data.name}
+                      </span>
+                    )}
+                  </motion.div>
+                )}
+                {/* Regime Badge — shows once regime data is loaded */}
+                {(dynamicWeighting.regimeData || dynamicWeighting.loading) && (
+                  <RegimeBadge
+                    regime={dynamicWeighting.regime}
+                    loading={dynamicWeighting.loading}
+                  />
+                )}
+              </motion.div>
 
-            {/* Date, Suggested, & Reset */}
+            </div>
+
+            {/* Bottom Row / Right Side: Buttons & Tools */}
             <motion.div
-              className="flex flex-wrap items-center justify-end gap-2 sm:gap-3"
+              className="flex flex-wrap items-center gap-2 sm:gap-3"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <div className="hidden md:flex items-center gap-1.5 text-white/20 text-xs">
+              <div className="hidden lg:flex items-center gap-1.5 text-white/20 text-xs mr-2">
                 <Calendar className="w-3.5 h-3.5" />
                 <span className="font-mono">{dateStr}</span>
               </div>
@@ -229,7 +232,7 @@ function DashboardPage() {
                   className="flex items-center gap-1.5 text-[11px] text-neon-purple hover:text-neon-purple/80 transition-colors px-2.5 py-1.5 rounded-lg bg-neon-purple/10 hover:bg-neon-purple/15 border border-neon-purple/20"
                 >
                   <Wand2 className="w-3.5 h-3.5" />
-                  AI Suggest
+                  Auto-Score
                 </button>
               )}
               <Link
