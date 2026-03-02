@@ -150,9 +150,9 @@ function DashboardPage() {
       <div className="min-h-screen pb-12">
         {/* ── Header ─────────────────────────────────────────── */}
         <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#0A0A1A]/70 border-b border-white/5">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-4">
             {/* Top Row: Brand & Search */}
-            <div className="flex items-center justify-between w-full sm:w-auto gap-4">
+            <div className="flex flex-wrap sm:flex-nowrap items-center justify-between w-full sm:w-auto gap-4">
               <motion.div
                 className="flex items-center gap-2 sm:gap-3 shrink-0"
                 initial={{ opacity: 0, x: -20 }}
@@ -173,12 +173,12 @@ function DashboardPage() {
 
               {/* Ticker Input + Regime Badge */}
               <motion.div
-                className="flex items-center gap-3"
+                className="flex flex-wrap items-center gap-3 w-full sm:w-auto"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="relative">
+                <div className="relative flex-1 sm:flex-none">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
                   <Input
                     type="text"
@@ -186,7 +186,7 @@ function DashboardPage() {
                     value={ticker}
                     onChange={handleTickerChange}
                     onKeyDown={handleTickerSubmit}
-                    className="w-32 sm:w-40 pl-9 font-mono text-sm bg-white/[0.03] border-white/10 text-neon-teal placeholder:text-white/20 focus:border-neon-teal/30 focus:ring-neon-teal/10 uppercase"
+                    className="w-full sm:w-40 pl-9 font-mono text-sm bg-white/[0.03] border-white/10 text-neon-teal placeholder:text-white/20 focus:border-neon-teal/30 focus:ring-neon-teal/10 uppercase"
                   />
                 </div>
                 {submittedTicker && (
