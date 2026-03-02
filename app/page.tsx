@@ -215,11 +215,11 @@ function DashboardPage() {
 
             {/* Date, Suggested, & Reset */}
             <motion.div
-              className="hidden md:flex items-center gap-3"
+              className="flex flex-wrap items-center justify-end gap-2 sm:gap-3"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <div className="flex items-center gap-1.5 text-white/20 text-xs">
+              <div className="hidden md:flex items-center gap-1.5 text-white/20 text-xs">
                 <Calendar className="w-3.5 h-3.5" />
                 <span className="font-mono">{dateStr}</span>
               </div>
@@ -241,10 +241,10 @@ function DashboardPage() {
               </Link>
               <Link
                 href="/help"
-                className="flex items-center gap-1.5 text-[11px] text-white/30 hover:text-neon-teal transition-colors px-2.5 py-1.5 rounded-lg hover:bg-white/5"
+                className="flex items-center gap-1.5 text-[11px] text-white/60 hover:text-white transition-colors px-2.5 py-1.5 rounded-lg border border-white/10 hover:bg-white/10"
               >
                 <HelpCircle className="w-3.5 h-3.5" />
-                Help
+                About This App
               </Link>
               <button
                 onClick={scoring.resetScores}

@@ -77,10 +77,7 @@ export function RationalePanel({
                         <span className="text-xl">{regime.icon}</span>
                         <div>
                             <h3 className="text-sm font-semibold text-white/90">
-                                Committee Minutes{" "}
-                                <span className="text-white/30 font-normal">
-                                    의사록
-                                </span>
+                                Committee Minutes
                             </h3>
                             <div className="flex items-center gap-2 mt-0.5">
                                 <span

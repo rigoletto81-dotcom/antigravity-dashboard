@@ -49,28 +49,28 @@ export const calculateRegimeWeights = (data: MarketData): CommitteeWeights => {
         regimeKey = "goldilocks";
         weights = { secular: 45, regime: 20, tactical: 25, cycle: 10 };
         rationale =
-            "역사적으로 2017년과 유사한 구간입니다. 우량주(Buffett)와 성장주(Coleman)의 복리 효과를 극대화하며 추세를 즐기십시오.";
+            "Historically similar to 2017. Maximize the compounding effect of quality stocks (Buffett) and growth stocks (Coleman) and enjoy the trend.";
     } else if (isTrendBull && isVolHigh) {
         // Quadrant 2: Reflexive Boom (상승장 + 높은 변동성 / 버블 후반)
         regimeName = "Volatile Melt-up";
         regimeKey = "meltup";
         weights = { secular: 25, regime: 15, tactical: 45, cycle: 15 };
         rationale =
-            "1999년이나 2021년과 유사합니다. 펀더멘털보다 수급과 모멘텀(PTJ/Griffin)이 지배합니다. 언제든 탈출할 준비를 하며 모멘텀을 추종하십시오.";
+            "Similar to 1999 or 2021. The market is driven by flows and momentum (PTJ/Griffin) rather than fundamentals. Be ready to exit at any time while following the momentum.";
     } else if (!isTrendBull && !isVolHigh) {
         // Quadrant 3: Defensive Grind (하락장 + 낮은 변동성 / 완만한 침체)
         regimeName = "Defensive Consolidation";
         regimeKey = "defensive";
         weights = { secular: 35, regime: 35, tactical: 10, cycle: 20 };
         rationale =
-            "2022년형 하락장입니다. 화려한 성장보다 확실한 현금흐름(Ackman)과 거시적 방어(Druckenmiller)가 계좌를 지킵니다.";
+            "A 2022-style bear market. Reliable cash flows (Ackman) and macro defense (Druckenmiller) protect the account better than flashy growth.";
     } else {
         // Quadrant 4: Panic / Capitulation (하락장 + 높은 변동성 / 위기)
         regimeName = "Market Crash / Panic";
         regimeKey = "crash";
         weights = { secular: 10, regime: 40, tactical: 15, cycle: 35 };
         rationale =
-            "2008년과 2020년 3월의 모습입니다. Howard Marks의 사이클 경고를 최우선으로 하며, 역발상 기회를 노리는 'Regime' 엔진에 집중하십시오.";
+            "Reminiscent of 2008 and March 2020. Prioritize Howard Marks' cycle warnings and focus on the 'Regime' engine looking for contrarian opportunities.";
     }
 
     // ---------------------------------------------------------
@@ -82,7 +82,7 @@ export const calculateRegimeWeights = (data: MarketData): CommitteeWeights => {
         weights.regime = 60;
         weights.secular = 5;
         rationale =
-            "역대급 매수 기회입니다. David Tepper 모드 가동. 밸류에이션 무시, 극단적 저평가 배팅을 지향합니다.";
+            "An unprecedented buying opportunity. Activating David Tepper mode. Ignoring valuation and betting on extreme undervaluation.";
     }
 
     // [Liquidity/Recession Rule] 장단기 금리차 역전 심화
@@ -90,7 +90,7 @@ export const calculateRegimeWeights = (data: MarketData): CommitteeWeights => {
         weights.secular -= 10;
         weights.cycle += 10;
         rationale +=
-            " 경기 침체 신호(금리 역전)가 감지되었습니다. 성장주 비중을 줄이고 안전 마진을 확보하십시오.";
+            " Recession signal (yield curve inversion) detected. Reduce growth stock exposure and secure a margin of safety.";
     }
 
     // ---------------------------------------------------------
